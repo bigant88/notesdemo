@@ -8,16 +8,7 @@ import com.example.notesdemo.domainmodels.Note
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 
-class NotesRepository private constructor(application: Application) {
-
-
-    private val localDataSource: NotesDataSource
-    private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
-
-    init {
-        val database = getDatabase(application)
-        localDataSource = LocalDataSource(database.noteDao)
-    }
+class NotesRepository (private val localDataSource: NotesDataSource) {
 
     suspend fun createNote(note: Note) {
         localDataSource.createNote(note)
@@ -42,7 +33,9 @@ class NotesRepository private constructor(application: Application) {
 
         fun getRepository(app: Application): NotesRepository {
             return INSTANCE ?: synchronized(this) {
-                NotesRepository(app).also {
+                val database = getDatabase(app)
+                val localDataSource = LocalDataSource(database.noteDao)
+                NotesRepository(localDataSource).also {
                     INSTANCE = it
                 }
             }
