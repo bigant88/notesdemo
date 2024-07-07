@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/ListNotesFragment"
         android:name="com.example.notesdemo.ui.list.ListNotesFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_list_notes">
 
         <action
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/AddEditNoteFragment"
         android:name="com.example.notesdemo.ui.addedit.AddEditNoteFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/create_fragment_label"
         tools:layout="@layout/fragment_add_edit">
 
         <action
