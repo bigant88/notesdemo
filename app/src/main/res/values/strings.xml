@@ -9,4 +9,6 @@
     <string name="note_detail_label">Note Detail</string>
     <string name="title_hint">Enter note\'s title</string>
     <string name="content_hint">Enter note\'s content</string>
+    <string name="delete_note">Delete</string>
+    <string name="edit_note">Edit</string>
 </resources>

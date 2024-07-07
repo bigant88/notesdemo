@@ -20,13 +20,20 @@ class NotesRepository private constructor(application: Application) {
     }
 
     suspend fun createNote(note: Note) {
-        localDataSource.saveNote(note)
-        println("save Note $note")
+        localDataSource.createNote(note)
     }
 
     suspend fun getAllNotes(): List<Note> =
         localDataSource.getAllNotes()
 
+    suspend fun deleteNode(note: Note) {
+        localDataSource.deleteNode(note)
+    }
+
+    suspend fun updateNode(note: Note) {
+        val result  = localDataSource.updateNode(note)
+        println("update Node $result $note")
+    }
 
 
     companion object {

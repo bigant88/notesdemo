@@ -14,8 +14,6 @@
         android:layout_height="match_parent"
         tools:context=".ui.addedit.AddEditNoteFragment">
 
-
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -32,7 +30,6 @@
                     android:background="@null"
                     android:hint="@string/title_hint"
                     android:maxLines="1"
-                    android:text="@={viewModel.title}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textStyle="bold" />
 
@@ -43,8 +40,7 @@
                     android:background="@null"
                     android:gravity="top"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                    android:hint="@string/content_hint"
-                    android:text="@={viewModel.content}" />
+                    android:hint="@string/content_hint" />
 
             </LinearLayout>
 

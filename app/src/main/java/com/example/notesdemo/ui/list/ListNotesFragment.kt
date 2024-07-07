@@ -21,9 +21,9 @@ import com.example.notesdemo.domainmodels.Note
  */
 class ListNotesFragment : Fragment() {
     private var _binding: FragmentListNotesBinding? = null
+    private val binding get() = _binding!!
     private val viewModel by viewModels<ListNotesViewModel>()
     private var viewModelAdapter: NoteAdapter? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,9 +34,7 @@ class ListNotesFragment : Fragment() {
             this.lifecycleOwner = viewLifecycleOwner
         }
         viewModelAdapter = NoteAdapter(NoteClick {
-//            findNavController().navigate(
-//
-//            )
+            findNavController().navigate(ListNotesFragmentDirections.actionListToDetail(it))
         })
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
@@ -123,8 +121,6 @@ class NoteAdapter(val callback: NoteClick) : RecyclerView.Adapter<NoteViewHolder
             it.note = notes[position]
             it.noteCallback = callback
         }
-        val item = notes[position]
-
     }
 }
 

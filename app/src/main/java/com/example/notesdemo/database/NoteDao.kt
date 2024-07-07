@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface NoteDao {
@@ -17,4 +18,16 @@ interface NoteDao {
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNote(note: NoteEntity)
+
+    @Update
+    suspend fun updateNote(note: NoteEntity): Int
+    /**
+     * Delete a note by id.
+     *
+     * @return the number of notes deleted. This should always be 1.
+     */
+    @Query("DELETE FROM notes WHERE id = :noteId")
+    suspend fun delete(noteId: String): Int
+
+
 }

@@ -12,7 +12,7 @@ class LocalDataSource(
     private val noteDao: NoteDao,
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO) : NotesDataSource {
 
-    override suspend fun saveNote(note: Note) = withContext(ioDispatcher){
+    override suspend fun createNote(note: Note) = withContext(ioDispatcher){
         noteDao.insertNote(note.toEntity())
     }
 
@@ -22,6 +22,14 @@ class LocalDataSource(
         } catch (e: Exception) {
             emptyList<Note>()
         }
+    }
+
+    override suspend fun deleteNode(note: Note): Int = withContext(ioDispatcher){
+         return@withContext noteDao.delete(note.id)
+    }
+
+    override suspend fun updateNode(note: Note): Int = withContext(ioDispatcher){
+        return@withContext noteDao.updateNote(note.toEntity())
     }
 
 }
